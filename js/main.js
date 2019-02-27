@@ -9,17 +9,22 @@ $(document).ready(function() {
 
 	function preach(value) {
 		preachSpace = [emojis[currEmoji]]
-		
+
+		// All caps option selected
+		value = $("#option-caps").is(":checked") ? value.toUpperCase() : value
+
 		let oldVal = value.trim().split(" ").reverse()
 		let newVal = []
-		
+
 		currentSpace = 0
+		
+
 		for (var i = oldVal.length - 1; i >= 0; i--) {
 			if(oldVal[i] != "") {
 				if (currentSpace > preachSpace.length - 1) {currentSpace = 0}
 					var tempVal = oldVal[i]
 				if(!oldVal[i].startsWith("#")) {
-					tempVal = tempVal + preachSpace[currentSpace]
+					document.getElementById('option-spaces').checked ? tempVal = tempVal + " " + preachSpace[currentSpace] + " " : tempVal = tempVal + preachSpace[currentSpace]
 				} else {
 					tempVal = tempVal + " "
 				}
@@ -61,12 +66,23 @@ $(document).ready(function() {
 			currEmoji++
 		}
 		$("#emojibutton").text(emojis[currEmoji])
-		let pageTitle = `O${emojis[currEmoji]}M${emojis[currEmoji]}G${emojis[currEmoji]} #preach`
+		let pageTitle = `O${emojis[currEmoji]}M${emojis[currEmoji]}G${emojis[currEmoji]}prea.ch`
 		document.getElementById("pagetitle").innerHTML = pageTitle
 		$("#output").val(preach($("#preachinput").val()))
 		updatelinks()
 
 	})
+
+
+
+	// Update on changed options
+	$("#option-spaces").on('click', function(){
+		$("#output").val(preach($("#preachinput").val()))
+	})
+	$("#option-caps").on('click', function(){
+		$("#output").val(preach($("#preachinput").val()))
+	})
+
 
 	$("#preachinput").on('input', function(){
 		let output = preach($(this).val())
