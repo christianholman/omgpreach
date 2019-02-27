@@ -61,7 +61,7 @@ $(document).ready(function() {
 			currEmoji++
 		}
 		$("#emojibutton").text(emojis[currEmoji])
-		let pageTitle = `O${emojis[currEmoji]}M${emojis[currEmoji]}G${emojis[currEmoji]}prea.ch`
+		let pageTitle = `O${emojis[currEmoji]}M${emojis[currEmoji]}G${emojis[currEmoji]} #preach`
 		document.getElementById("pagetitle").innerHTML = pageTitle
 		$("#output").val(preach($("#preachinput").val()))
 		updatelinks()
