@@ -78,9 +78,11 @@ $(document).ready(function() {
 	// Update on changed options
 	$("#option-spaces").on('click', function(){
 		$("#output").val(preach($("#preachinput").val()))
+		updatelinks()
 	})
 	$("#option-caps").on('click', function(){
 		$("#output").val(preach($("#preachinput").val()))
+		updatelinks()
 	})
 
 
